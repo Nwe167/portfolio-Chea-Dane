@@ -1,0 +1,457 @@
+/* ===== RESET & GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url("https://i.pinimg.com/originals/55/01/60/5501609ee45d514d1f2c4a63502045e2.gif");
+  color: #111;
+  line-height: 1.6;
+  
+}
+
+/* ===== NAVBAR ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+   background-color: #ffffff;
+  padding: 16px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 20px rgba(0,0,0,.05);
+  z-index: 999;
+ 
+  
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-list a {
+
+  text-decoration: none;
+  font-family: "Segoe UI", sans-serif;
+  color: #111;
+  font-weight: 500;
+  transition: .3s;
+  font-size: 20px;
+}
+
+.nav-list a:hover {
+  color: #2563eb;
+}
+
+/* ===== HAMBURGER ===== */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background: #111;
+  display: block;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background: #111;
+  left: 0;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  padding: 120px 8vw;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  align-items: center;
+  gap: 3rem;
+  animation: fadeUp .8s ease;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: aqua;
+}
+
+.hero-content span {
+  color: #edf1f8;
+}
+
+.hero-content p {
+  margin: 1rem 0 2rem;
+  opacity: .8;
+  font-size: 1.05rem;
+  color: #ffffff;
+  width: 80%;
+  font-size: 40px;
+
+}
+
+.hero-content button {
+  padding: 20px 50px;
+  border-radius: 12px;
+  border: none;
+  background: #eeff00;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 25px;
+}
+
+.hero-content button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37,99,235,.35);
+}
+
+/* Hero Image */
+.hero-img img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* ===== SECTION GLOBAL ===== */
+.section {
+  padding: 100px 8vw;
+
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: aqua;
+}
+
+/* ===== ABOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text p {
+  font-size: 20px;
+  margin-bottom: 1rem;
+  opacity: .85;
+    color: #ffffff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.skills {
+  margin-top: 1rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: .6rem;
+}
+
+.skills li {
+    font-family: 'Courier New', Courier, monospace;
+  background: #eef2ff;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.social {
+  margin-top: 1.5rem;
+}
+
+.social a {
+  color: #ff0000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* About Image */
+.about-img img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* ===== PROJECTS ===== */
+.project-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 2rem;
+  ;
+  border: none;
+   
+}
+.project-box a {
+  text-decoration: none;}
+
+.project-box a:hover .card {
+  transform: translateY(-10px) scale(1.02);
+}
+
+  /* .project-box button {
+    margin-top: 2rem;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+
+  } */
+
+.card {
+  background: rgb(3, 58, 141);
+  padding: 50px;
+  border-radius: 18px;
+  text-align: center;
+  font-weight: 600;
+  transition: .3s;
+  color: #eeff00;
+  font-size: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* ===== CONTACT ===== */
+form {
+  max-width: 500px;
+  margin: auto;
+  display: grid;
+  gap: 1rem;
+}
+
+input, textarea {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 120px;
+}
+
+form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== KEYFRAME ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image float + hover animation (subtle, accessible) */
+@keyframes float {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-8px) rotate(0.6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* apply to hero and about images; start paused so reveal-on-scroll can trigger */
+.hero-img img,
+.about-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: paused; /* start paused to avoid animating off-screen */
+  transition: transform .28s ease, box-shadow .28s ease;
+  will-change: transform;
+}
+
+/* when section becomes visible (observer will add .show), run image animation */
+.show .hero-img img,
+.show .about-img img {
+  animation-play-state: running;
+}
+
+/* subtle slide-in for sections when .show is applied */
+.section {
+  transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .6s ease;
+  will-change: transform, opacity;
+}
+.section.show,
+.hero.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* typing cursor for #typing */
+#typing {
+  display: inline-block;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.9);
+  padding-right: 2px;
+  margin-left: 6px;
+  animation: blink 900ms steps(2, start) infinite;
+}
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(255,255,255,0.9); }
+}
+
+/* small card reveal */
+.card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1);
+}
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-img img,
+  .about-img img {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero,
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-img {
+    order: -1;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    display: none;
+    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+}
+
+/* Floating CTA (hidden off-screen, slides up when .show added) */
+.cta {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #eeff00;
+  color: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  cursor: pointer;
+  z-index: 1200;
+  transform: translateY(120%); /* hidden */
+  transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .3s;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* visible state (pulls up on scroll) */
+.cta.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* smaller screens tweak */
+@media (max-width: 420px) {
+  .cta {
+    right: 14px;
+    bottom: 14px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+}
+
+/* respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

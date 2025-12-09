@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- added for responsiveness -->
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <h2 class="logo">MyPortfolio</h2>
+
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-list">
+      <span class="hamburger"></span>
+    </button>
+
+    <ul id="nav-list" class="nav-list">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <section id="hero" class="hero hidden">
+    <div class="hero-content">
+  <h1>Hello, I'm Chea Dane <span id="typing"></span></h1>
+      <p>Frontend Developer | Web Designer</p>
+      <button>Hire Me</button>
+    </div>
+
+    <!-- PROFILE IMAGE -->
+    <div class="hero-img">
+      <img src="img/IMG_7279.JPG" alt="My Profile"> <!-- changed to relative path -->
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about section-hidden">
+    <h2>About Me</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a frontend developer who builds accessible, responsive, and user-friendly web interfaces. I enjoy turning ideas into products using HTML, CSS, and JavaScript.</p>
+
+        <p>Experience: 2+ years building small business sites and personal projects. I focus on clean code, performance, and thoughtful UX.</p>
+
+        <h3>Skills</h3>
+        <ul class="skills">
+          <li>HTML / CSS</li>
+          <li>JavaScript </li>
+          <li>React js / Django </li>
+          <li>Git / GitHub</li>
+          <li>Vercel</li>
+          <li>Figma</li>
+        </ul>
+
+        <div class="social">
+          <a href="https://github.com/Nwe167" aria-label="GitHub">GitHub</a> •
+          <a href="https://www.linkedin.com/in/bro-dane-9558ab354?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn">LinkedIn</a> •
+          <a href="brodane333@gmail.com" aria-label="Email">Email</a>
+        </div>
+      </div>
+
+      <div class="about-img">
+        <img src="img/IMG_7279.JPG" alt="Profile portrait">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section hidden">
+    <h2>My Projects</h2>
+    <div class="project-box">
+      <a href="https://ngaisov-project.vercel.app/">
+
+        <div class="card">Project One</div>
+      </a>
+      <a href="https://buystore-ten.vercel.app/">
+        <div class="card">Project Two</div>
+      </a>
+      <a href="">
+        <div class="card">Project Three</div>
+      </a>
+  
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section hidden">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Message"></textarea>
+      <button>Send</button>
+    </form>
+  </section>
+
+  <!-- Floating CTA button (appears when you scroll down) -->
+  <button id="cta" class="cta" aria-label="Contact - Hire Me">Hire Me</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
