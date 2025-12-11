@@ -79,3 +79,17 @@ document.querySelectorAll('.hidden, .section-hidden, .hero').forEach(el => {
   }
   tick();
 })();
+
+// Scroll progress bar
+(function() {
+  const progressBar = document.createElement('div');
+  progressBar.id = 'scroll-progress';
+  document.body.prepend(progressBar);
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+})();

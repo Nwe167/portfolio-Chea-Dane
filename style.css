@@ -14,7 +14,6 @@ body {
   background-image: url("https://i.pinimg.com/originals/55/01/60/5501609ee45d514d1f2c4a63502045e2.gif");
   color: #111;
   line-height: 1.6;
-  
 }
 
 /* ===== NAVBAR ===== */
@@ -22,15 +21,13 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-   background-color: #ffffff;
+  background-color: #ffffff;
   padding: 16px 8vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 5px 20px rgba(0,0,0,.05);
   z-index: 999;
- 
-  
 }
 
 .logo {
@@ -45,7 +42,6 @@ body {
 }
 
 .nav-list a {
-
   text-decoration: none;
   font-family: "Segoe UI", sans-serif;
   color: #111;
@@ -64,6 +60,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px;
 }
 
 .hamburger {
@@ -72,6 +69,7 @@ body {
   background: #111;
   display: block;
   position: relative;
+  transition: background .2s ease;
 }
 
 .hamburger::before,
@@ -82,10 +80,15 @@ body {
   height: 3px;
   background: #111;
   left: 0;
+  transition: transform .25s ease, top .25s ease;
 }
 
 .hamburger::before { top: -8px; }
 .hamburger::after { top: 8px; }
+
+.nav.open .hamburger { background: transparent; }
+.nav.open .hamburger::before { transform: translateY(8px) rotate(45deg); }
+.nav.open .hamburger::after { transform: translateY(-8px) rotate(-45deg); }
 
 /* ===== HERO ===== */
 .hero {
@@ -114,7 +117,6 @@ body {
   color: #ffffff;
   width: 80%;
   font-size: 40px;
-
 }
 
 .hero-content button {
@@ -144,9 +146,10 @@ body {
 /* ===== SECTION GLOBAL ===== */
 .section {
   padding: 100px 8vw;
-
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
+  transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .6s ease;
+  will-change: transform, opacity;
 }
 
 .section h2 {
@@ -168,24 +171,76 @@ body {
   font-size: 20px;
   margin-bottom: 1rem;
   opacity: .85;
-    color: #ffffff;
+  color: #ffffff;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
 
+/* Skills with progress bars */
 .skills {
-  margin-top: 1rem;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: .6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 .skills li {
-    font-family: 'Courier New', Courier, monospace;
-  background: #eef2ff;
-  padding: 8px 14px;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.skills li span:first-child {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 40px;
+  background: transparent; /* No background for remaining % */
+  border-radius: 999px;
+  overflow: hidden;
+  border: none;
+  position: relative;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #7c3aed);
+  border-radius: 999px;
+  width: 0%;
+  will-change: width;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16px;
+  position: relative;
+}
+
+.skill-label {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* animate bars on scroll - animates from 0% to target width */
+.show .skill-progress {
+  animation: fillBar 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fillBar {
+  0% {
+    width: 0% !important;
+    opacity: 0;
+  }
+  100% {
+    width: inherit !important;
+    opacity: 1;
+  }
 }
 
 .social {
@@ -210,28 +265,16 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 2rem;
-  ;
   border: none;
-   
 }
+
 .project-box a {
-  text-decoration: none;}
+  text-decoration: none;
+}
 
 .project-box a:hover .card {
   transform: translateY(-10px) scale(1.02);
 }
-
-  /* .project-box button {
-    margin-top: 2rem;
-    padding: 14px 28px;
-    border-radius: 12px;
-    border: none;
-    background: #2563eb;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-
-  } */
 
 .card {
   background: rgb(3, 58, 141);
@@ -244,6 +287,14 @@ body {
   font-size: 25px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: cardReveal .6s cubic-bezier(.2,.9,.2,1) forwards;
 }
 
 .card:hover {
@@ -277,6 +328,12 @@ form button {
   padding: 14px;
   font-weight: 600;
   cursor: pointer;
+  transition: .3s;
+}
+
+form button:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
 }
 
 /* ===== SCROLL ANIMATION ===== */
@@ -291,7 +348,7 @@ form button {
   transform: translateY(0);
 }
 
-/* ===== KEYFRAME ===== */
+/* ===== KEYFRAMES ===== */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -303,14 +360,24 @@ form button {
   }
 }
 
-/* Image float + hover animation (subtle, accessible) */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image float + hover animation */
 @keyframes float {
   0%   { transform: translateY(0) rotate(0deg); }
   50%  { transform: translateY(-8px) rotate(0.6deg); }
   100% { transform: translateY(0) rotate(0deg); }
 }
 
-/* apply to hero and about images; start paused so reveal-on-scroll can trigger */
 .hero-img img,
 .about-img img {
   display: block;
@@ -318,24 +385,17 @@ form button {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
-
   animation: float 6s ease-in-out infinite;
-  animation-play-state: paused; /* start paused to avoid animating off-screen */
+  animation-play-state: paused;
   transition: transform .28s ease, box-shadow .28s ease;
   will-change: transform;
 }
 
-/* when section becomes visible (observer will add .show), run image animation */
 .show .hero-img img,
 .show .about-img img {
   animation-play-state: running;
 }
 
-/* subtle slide-in for sections when .show is applied */
-.section {
-  transition: transform .7s cubic-bezier(.2,.9,.2,1), opacity .6s ease;
-  will-change: transform, opacity;
-}
 .section.show,
 .hero.show {
   opacity: 1;
@@ -351,29 +411,23 @@ form button {
   margin-left: 6px;
   animation: blink 900ms steps(2, start) infinite;
 }
+
 @keyframes blink {
   from, to { border-color: transparent; }
   50% { border-color: rgba(255,255,255,0.9); }
 }
 
-/* small card reveal */
-.card {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1);
-}
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* reduce motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .hero-img img,
-  .about-img img {
-    animation: none;
-    transition: none;
-  }
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #eeff00, #00ffff, #0969da);
+  width: 0%;
+  transition: width 100ms ease;
+  z-index: 9999;
+  will-change: width;
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
@@ -409,9 +463,42 @@ form button {
   .nav-list.active {
     display: flex;
   }
+
+  .section {
+    padding: 60px 4vw;
+  }
+
+  .hero {
+    padding: 100px 4vw;
+  }
 }
 
-/* Floating CTA (hidden off-screen, slides up when .show added) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  .hero-content button {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 30px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Floating CTA button */
 .cta {
   position: fixed;
   right: 20px;
@@ -425,19 +512,21 @@ form button {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
   cursor: pointer;
   z-index: 1200;
-  transform: translateY(120%); /* hidden */
+  transform: translateY(120%);
   transition: transform .36s cubic-bezier(.2,.9,.2,1), opacity .3s;
   opacity: 0;
   will-change: transform, opacity;
 }
 
-/* visible state (pulls up on scroll) */
 .cta.show {
   transform: translateY(0);
   opacity: 1;
 }
 
-/* smaller screens tweak */
+.cta:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
 @media (max-width: 420px) {
   .cta {
     right: 14px;
@@ -447,10 +536,13 @@ form button {
   }
 }
 
-/* respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
   .cta {
-    transition: none;
     transform: none;
     opacity: 1;
   }
